@@ -10,9 +10,20 @@ import {
 } from "@mui/icons-material";
 
 /* Notes:
-- Container adds some bake in margin and padding to your content
+- Container adds some bakef in margin and padding to your content
 */
+
+
+// styles
+const useStyles = {
+  btn: {
+    fontSize: 60,
+    backgroundColor: 'violet'
+  }
+}
+
 const Create = () => {
+   
   return (
     // <Box>
     <Container>
@@ -49,6 +60,7 @@ const Create = () => {
         Create a New Note
       </Typography>
       <Button
+        sx={useStyles.btn}
         onClick={() => console.log("you clicked me")}
         type="submit"
         color="secondary"
