@@ -1,8 +1,10 @@
+// Video: https://www.youtube.com/watch?v=ByG--A6jPYk
+
 import React from "react";
 
 import { Button } from "@mui/material";
 import { Box } from "@mui/system";
-import { StyledPaper, StyledPaper2 } from "./StyledPaper";
+import { StyledPaper, StyledPaper2 } from "./styled-paper.styles";
 
 // import { Paper, Button } from "@mui/material";
 // import { Box, styled } from "@mui/system";

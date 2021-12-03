@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Notes, Create } from "./pages";
 import FullWidthGrid from "./sandbox/grid/grid.component";
-import StyledPaperExample from "./sandbox/styled/StyledPaper.component";
+import StyledPaperExample from "./sandbox/styled/styled-paper.component";
 
 const App = () => {
   return (
