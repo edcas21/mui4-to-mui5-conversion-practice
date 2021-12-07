@@ -1,18 +1,38 @@
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Notes, Create } from "./pages";
+import { ThemeProvider } from "@emotion/react";
+//import { createTheme } from "@mui/material";
+
+// theme
+import ourTheme from "./assets/our-theme";
+
+// components
+import Notes from "./pages/notes/notes.component";
+import Create from "./pages/create/create.component";
 import FullWidthGrid from "./sandbox/grid/grid.component";
 import StyledPaperExample from "./sandbox/styled/styled-paper.component";
 
+// const ourTheme = createTheme({
+//   palette: {
+//     primary: {
+//       main: "#fefefe",
+//     },
+//   },
+// });
+
 const App = () => {
+  console.log(ourTheme);
   return (
-    <Router>
-      <Routes>
-        <Route exact path="/" element={<Notes />} />
-        <Route path="/create" element={<Create />} />
-        {/* <Route path="/sandbox" element={<StyledPaperExample />} /> */}
-        <Route path="/sandbox" element={<FullWidthGrid />} />
-      </Routes>
-    </Router>
+    <ThemeProvider theme={ourTheme}>
+      <Router>
+        <Routes>
+          <Route exact path="/" element={<Notes />} />
+          <Route path="/create" element={<Create />} />
+          {/* <Route path="/sandbox" element={<StyledPaperExample />} /> */}
+          <Route path="/sandbox" element={<FullWidthGrid />} />
+        </Routes>
+      </Router>
+    </ThemeProvider>
   );
 };
 
