@@ -1,11 +1,36 @@
-import { Box } from "@mui/system";
-import { Drawer, Typography } from "@mui/material";
 import React from "react";
 
-// Styled
+// components
+import { Box } from "@mui/system";
+import {
+  Drawer,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Typography,
+} from "@mui/material";
+
+//icons
+import { AddCircleTwoTone, SubjectTwoTone } from "@mui/icons-material";
+
+// Styles
 import layoutStyles from "./layout.styles";
 
 const Layout = ({ children }) => {
+  const menuItems = [
+    {
+      text: "My Notes",
+      icon: <SubjectTwoTone color="secondary" />,
+      path: "/",
+    },
+    {
+      text: "Create Note",
+      icon: <AddCircleTwoTone color="secondary" />,
+      path: "/",
+    },
+  ];
+
   return (
     <Box sx={layoutStyles.root}>
       {/* app bar */}
@@ -22,6 +47,13 @@ const Layout = ({ children }) => {
         <Box>
           <Typography variant="h5">Ninja Notes</Typography>
         </Box>
+        <List>
+          {menuItems.map((menuItem, index) => (
+            <ListItem key={index}>
+              <ListItemText primary={menuItem.text} />
+            </ListItem>
+          ))}
+        </List>
       </Drawer>
       <Box sx={layoutStyles.page}>{children}</Box>
     </Box>

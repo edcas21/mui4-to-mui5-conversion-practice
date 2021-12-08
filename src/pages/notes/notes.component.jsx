@@ -9,7 +9,7 @@ const Notes = () => {
   const [notes, setNotes] = useState([]);
 
   /* 
-  Hook - Allow you to pull away different pieces of complexity from functional components. They are regular functions that you can import directly from the react library and call inside your components.
+  Hook - Allows you to pull away different pieces of complexity from functional components. They are regular functions that you can import directly from the react library and call inside your components.
 
   useEffect - A hook that is used for wrapping around code that has 'side effects,' and acts like a combination of the component lifecycle methods; componentDidMount, componentDidUpdate, componentWillMount.
 

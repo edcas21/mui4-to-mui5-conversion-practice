@@ -4,6 +4,7 @@ const layoutStyles = {
     page: {
         background: "#f9f9f9",
         width: "100%",
+        paddingLeft: 3,
     },
     drawer: {
         width: drawerWidth,
