@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { Box } from "@mui/system";
 import { Grid, Paper } from "@mui/material";
 
+import { NoteCard } from "..";
+
 const Notes = () => {
   const [notes, setNotes] = useState([]);
 
@@ -23,26 +25,25 @@ const Notes = () => {
       .then((res) => res.json()) // parses the data received from the endpoint
       .then((data) => setNotes(data)); // passes that data over to be used for the state
   }, []); // The empty array tells it to only run the provided code once
+
+  const handleDelete = async (id) => {
+    // Json server will check the endpoint and look for the given id in order to delete it
+    await fetch("http://localhost:8000/notes/" + id, {
+      method: 'DELETE'
+    });
+
+    const newNotes = notes.filter(note => note.id !== id);
+    setNotes(newNotes);
+  }
+
   return (
     <Box>
-      {/* <Grid container>
-        <Grid item xs={12} sm={6} md={3}>
-          <Paper>1</Paper>
-        </Grid>
-        <Grid item xs={12} sm={6} md={3}>
-          <Paper>2</Paper>
-        </Grid>
-        <Grid item xs={12} sm={6} md={3}>
-          <Paper>3</Paper>
-        </Grid>
-        <Grid item xs={12} sm={6} md={3}>
-          <Paper>4</Paper>
-        </Grid>
-      </Grid> */}
-      <Grid container>
+    {/* Takes the base spacing value and multiplies it by 3 */}
+      <Grid container spacing={3}>
         {notes.map((note) => (
           <Grid key={note.id} item xs={12} sm={6} md={3}>
-            <Paper>{note.title}</Paper>
+            {/* <Paper>{note.title}</Paper> */}
+            <NoteCard note={note} handleDelete={handleDelete} />
           </Grid>
         ))}
       </Grid>
@@ -65,4 +66,20 @@ export default Notes;
     <Paper>3</Paper>
   </Grid>
 </Grid>; */
+}
+{
+  /* <Grid container>
+        <Grid item xs={12} sm={6} md={3}>
+          <Paper>1</Paper>
+        </Grid>
+        <Grid item xs={12} sm={6} md={3}>
+          <Paper>2</Paper>
+        </Grid>
+        <Grid item xs={12} sm={6} md={3}>
+          <Paper>3</Paper>
+        </Grid>
+        <Grid item xs={12} sm={6} md={3}>
+          <Paper>4</Paper>
+        </Grid>
+      </Grid> */
 }
