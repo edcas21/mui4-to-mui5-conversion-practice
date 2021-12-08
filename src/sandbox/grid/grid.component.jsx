@@ -24,6 +24,9 @@ const Contents = styled(Paper)(({ theme }) => ({
 
 const FullWidthGrid = () => {
   return (
+    /*
+    Material UI gives us a default 12 column grid sytem that is based off flexbox
+    */
     <Grid
       container
       sx={gridStyles}

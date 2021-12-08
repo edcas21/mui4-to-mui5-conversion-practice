@@ -1,3 +1,6 @@
+What does it do?
+Allows you to create mock API. Can be used to build a quick back-end for prototyping and mocking.
+
 installation:
 npm install -g json-server
 

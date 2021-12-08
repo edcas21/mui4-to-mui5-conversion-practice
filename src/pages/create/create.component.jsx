@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 // components
 import { Box, styled } from "@mui/system";
 import {
@@ -51,6 +52,9 @@ Instead of using the makeStyles function, create an object for the styling prope
 */
 
 const Create = () => {
+
+  // In react router 6, useHistory is replaced by useNavigate
+  const navigate = useNavigate();
   // State
   const [title, setTitle] = useState("");
   const [details, setDetails] = useState("");
@@ -73,42 +77,19 @@ const Create = () => {
     }
 
     if (title && details) {
-      console.log(title, details, category);
+      fetch('http://localhost:8000/notes', {
+        method: 'POST',
+        headers: {"Content-type": "application/json"},
+        // Takes the state values and puts them in a object, stringifies them in order to turn them into a JSON object and then that gets sent over to the database.
+        body: JSON.stringify({ title, details, category })
+      // redirects the user back to the notes page
+      }).then(() => navigate('/'));
     }
   };
 
   return (
     // <Box>
     <Container>
-      {/* 
-      <Typography 
-      variant="h1"
-      color="primary"
-      align="center"
-      >
-      Create a new note</Typography> 
-      */}
-      {/*
-      <Typography color="secondary" noWrap>
-        Donec pulvinar interdum egestas. Nulla mollis, risus hendrerit dignissim
-        commodo, augue velit cursus lectus, et luctus ipsum urna in ante. Nulla
-        posuere malesuada ligula, et pellentesque leo rutrum nec. Curabitur in
-        vehicula orci. Aliquam enim eros, pharetra eu dolor at, porttitor
-        bibendum nisi. Sed iaculis arcu a odio tempor volutpat. Ut ornare, nulla
-        ut vestibulum mattis, odio quam iaculis dolor, vitae sagittis metus
-        sapien quis sem. Duis rutrum sapien lectus.
-      </Typography> 
-      */}
-      {/*
-      <Button type="submit" variant="contained">Submit</Button>
-      <Button type="submit" variant="outlined" color="secondary" disableElevation>Submit</Button>
-
-      <ButtonGroup color="secondary" variant="contained"> 
-        <Button>One</Button>
-        <Button>Two</Button>
-        <Button>Three</Button>
-      </ButtonGroup> 
-      */}
       <Typography
         /* 
       Instead of using className, you can just use the sx prop to pass the component it's respective styling object
@@ -174,17 +155,6 @@ const Create = () => {
           Submit
         </Button>
       </form>
-
-      {/* icons */}
-      {/* 
-      <br />
-      <AcUnitOutlined />
-      <AcUnitOutlined color="secondary" fontSize="large" />
-      <AcUnitOutlined color="secondary" fontSize="small" />
-      <AcUnitOutlined color="action" />
-      <AcUnitOutlined color="error" />
-      <AcUnitOutlined color="disabled" /> 
-      */}
     </Container>
     // </Box>
   );
