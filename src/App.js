@@ -10,7 +10,8 @@ import ourTheme from "./assets/our-theme";
 import Notes from "./pages/notes/notes.component";
 import Create from "./pages/create/create.component";
 import FullWidthGrid from "./sandbox/grid/grid.component";
-import StyledPaperExample from "./sandbox/styled/styled-paper.component";
+import { Layout } from "./pages";
+//import StyledPaperExample from "./sandbox/styled/styled-paper.component";
 
 // const ourTheme = createTheme({
 //   palette: {
@@ -25,12 +26,14 @@ const App = () => {
   return (
     <ThemeProvider theme={ourTheme}>
       <Router>
-        <Routes>
-          <Route exact path="/" element={<Notes />} />
-          <Route path="/create" element={<Create />} />
-          {/* <Route path="/sandbox" element={<StyledPaperExample />} /> */}
-          <Route path="/sandbox" element={<FullWidthGrid />} />
-        </Routes>
+        <Layout>
+          <Routes>
+            <Route exact path="/" element={<Notes />} />
+            <Route path="/create" element={<Create />} />
+            {/* <Route path="/sandbox" element={<StyledPaperExample />} /> */}
+            <Route path="/sandbox" element={<FullWidthGrid />} />
+          </Routes>
+        </Layout>
       </Router>
     </ThemeProvider>
   );
