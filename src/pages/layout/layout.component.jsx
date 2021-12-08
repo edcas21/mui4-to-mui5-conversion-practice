@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 // components
 import { Box } from "@mui/system";
@@ -18,6 +19,8 @@ import { AddCircleTwoTone, SubjectTwoTone } from "@mui/icons-material";
 import layoutStyles from "./layout.styles";
 
 const Layout = ({ children }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const menuItems = [
     {
       text: "My Notes",
@@ -27,7 +30,7 @@ const Layout = ({ children }) => {
     {
       text: "Create Note",
       icon: <AddCircleTwoTone color="secondary" />,
-      path: "/",
+      path: "/create",
     },
   ];
 
@@ -49,7 +52,13 @@ const Layout = ({ children }) => {
         </Box>
         <List>
           {menuItems.map((menuItem, index) => (
-            <ListItem key={index}>
+            <ListItem
+              sx={location.pathname === menuItem.path ? layoutStyles.active : null}
+              button
+              key={index}
+              onClick={() => navigate(menuItem.path)}
+            >
+              <ListItemIcon>{menuItem.icon}</ListItemIcon>
               <ListItemText primary={menuItem.text} />
             </ListItem>
           ))}

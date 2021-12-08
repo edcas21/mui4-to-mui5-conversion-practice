@@ -14,6 +14,9 @@ const layoutStyles = {
     },
     root: {
         display: 'flex',
+    },
+    active: {
+        background: "#f4f4f4"
     }
 };
 
