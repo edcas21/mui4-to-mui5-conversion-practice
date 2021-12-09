@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@emotion/react";
-//import { createTheme } from "@mui/material";
 
 // theme
 import ourTheme from "./assets/our-theme";
@@ -11,15 +10,11 @@ import Notes from "./pages/notes/notes.component";
 import Create from "./pages/create/create.component";
 import FullWidthGrid from "./sandbox/grid/grid.component";
 import { Layout } from "./pages";
+
+// Styled reusable components that carry around their styling no matter where you use them
 //import StyledPaperExample from "./sandbox/styled/styled-paper.component";
 
-// const ourTheme = createTheme({
-//   palette: {
-//     primary: {
-//       main: "#fefefe",
-//     },
-//   },
-// });
+// Theme is in our-theme.js
 
 const App = () => {
   console.log(ourTheme);
@@ -27,7 +22,7 @@ const App = () => {
     <ThemeProvider theme={ourTheme}>
       <Router>
         <Layout>
-          <Routes>
+            <Routes> {/* No more <Switch> */}
             <Route exact path="/" element={<Notes />} />
             <Route path="/create" element={<Create />} />
             {/* <Route path="/sandbox" element={<StyledPaperExample />} /> */}

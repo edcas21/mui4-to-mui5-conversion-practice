@@ -23,8 +23,10 @@ import { AddCircleTwoTone, SubjectTwoTone } from "@mui/icons-material";
 import layoutStyles from "./layout.styles";
 
 const Layout = ({ children }) => {
+  // const history = useHistory();
   const navigate = useNavigate();
   const location = useLocation();
+
   const menuItems = [
     {
       text: "My Notes",
@@ -48,9 +50,10 @@ const Layout = ({ children }) => {
             Today is {format(new Date(), "MMMM do Y")}
           </Typography>
           <Typography>Ein</Typography>
-          <Avatar sx={layoutStyles.avatar} src= "/ein.jpg" />
+          <Avatar sx={layoutStyles.avatar} src="/ein.jpg" />
         </Toolbar>
       </AppBar>
+
       {/* side drawer */}
       <Drawer
         // Use the css API to override the styling of sub-components of mui components : https://mui.com/api/drawer/#css
@@ -58,6 +61,11 @@ const Layout = ({ children }) => {
           ...layoutStyles.drawer,
           "& .MuiDrawer-paper": layoutStyles.drawerPaper,
         }}
+        // no need for:
+        /* 
+        className={classes.drawer} 
+        classes={{ paper: classes.drawerPaper }}
+        */
         variant="permanent"
         anchor="left"
       >
@@ -83,6 +91,9 @@ const Layout = ({ children }) => {
         </List>
       </Drawer>
       <Box sx={layoutStyles.page}>
+        {/*
+          When you need to apply a syling object, and then a separate style outside of it. Spread the props, then tack on the additional property.
+        */}
         <Box sx={{ ...layoutStyles.toolbar, marginTop: 2 }} />
         {children}
       </Box>

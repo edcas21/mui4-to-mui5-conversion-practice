@@ -1,4 +1,5 @@
 import { createTheme } from "@mui/material";
+// No more createMuiTheme
 import { purple } from "@mui/material/colors";
 
 const ourTheme = createTheme(

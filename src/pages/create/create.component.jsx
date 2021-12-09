@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 // components
 import { Box, styled } from "@mui/system";
 import {
@@ -23,9 +23,10 @@ import {
   Keyboard,
 } from "@mui/icons-material";
 // styles
+
 import createStyles from "./create.styles";
 
-/* Notes:
+/*
 - <Container> adds some baked in margin and padding to your content
 - <Box> wraps your component and creates a new DOM element. By default it creates a new <div>, but can be changed using the component prop.
 - sx: All system properties are available via the sx prop. Also allows you to specify any other CSS rules you may need.
@@ -35,23 +36,12 @@ import createStyles from "./create.styles";
 Instead of using the makeStyles function, create an object for the styling properties. For each component, create a new object with its respective styling properties. The styling can be in a separate file and then imported like any other object.
 */
 
-/* styles
- const useStyles = {
-   btn: {
-     fontSize: 60,
-     backgroundColor: "violet",
-     "&:hover": {
-       backgroundColor: "blue",
-     },
-   },
-   title: {
-     textDecoration: "underline",
-     marginBottom: 1,
-   },
- };
-*/
+// Styling is in the create.styles.js file
 
 const Create = () => {
+
+  // no need for:
+  // const classes = useStyles()
 
   // In react router 6, useHistory is replaced by useNavigate
   const navigate = useNavigate();
@@ -77,19 +67,18 @@ const Create = () => {
     }
 
     if (title && details) {
-      fetch('http://localhost:8000/notes', {
-        method: 'POST',
-        headers: {"Content-type": "application/json"},
-        // Takes the state values and puts them in a object, stringifies them in order to turn them into a JSON object and then that gets sent over to the database.
-        body: JSON.stringify({ title, details, category })
-      // redirects the user back to the notes page
-      }).then(() => navigate('/'));
+      fetch("http://localhost:8000/notes", {
+        method: "POST",
+        headers: { "Content-type": "application/json" },
+        // Takes the state values and puts them in an object, stringifies them in order to turn them into a JSON object and then that gets sent over to the database.
+        body: JSON.stringify({ title, details, category }),
+        // .then(() => history.push('/'))
+      }).then(() => navigate("/")); // redirects the user back to the notes page
     }
   };
 
   return (
-    // <Box>
-    <Container>
+    <Container size="sm">
       <Typography
         /* 
       Instead of using className, you can just use the sx prop to pass the component it's respective styling object
@@ -106,6 +95,7 @@ const Create = () => {
       <form noValidate autoComplete="off" onSubmit={handleSubmit}>
         <TextField
           sx={createStyles.field}
+          // className={classes.field}
           onChange={(e) => setTitle(e.target.value)}
           label="Note Title"
           variant="outlined"
@@ -156,7 +146,6 @@ const Create = () => {
         </Button>
       </form>
     </Container>
-    // </Box>
   );
 };
 
