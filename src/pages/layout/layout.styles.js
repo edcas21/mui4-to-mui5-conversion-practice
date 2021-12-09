@@ -27,6 +27,9 @@ const layoutStyles = {
     width: `calc(100% - ${drawerWidth}px)`,
   },
   toolbar: ourTheme.mixins.toolbar,
+  avatar: {
+      marginLeft: ourTheme.spacing(2)
+  }
 };
 
 export default layoutStyles;

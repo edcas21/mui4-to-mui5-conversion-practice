@@ -12,6 +12,7 @@ import {
   Typography,
   AppBar,
   Toolbar,
+  Avatar,
 } from "@mui/material";
 import { format } from "date-fns";
 
@@ -46,7 +47,8 @@ const Layout = ({ children }) => {
           <Typography sx={{ flexGrow: 1 }}>
             Today is {format(new Date(), "MMMM do Y")}
           </Typography>
-          <Typography>Mario</Typography>
+          <Typography>Ein</Typography>
+          <Avatar sx={layoutStyles.avatar} src= "/ein.jpg" />
         </Toolbar>
       </AppBar>
       {/* side drawer */}
