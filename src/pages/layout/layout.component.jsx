@@ -48,7 +48,7 @@ const Layout = ({ children }) => {
         anchor="left"
       >
         <Box>
-          <Typography variant="h5">Ninja Notes</Typography>
+          <Typography sx={layoutStyles.title} variant="h5">Ninja Notes</Typography>
         </Box>
         <List>
           {menuItems.map((menuItem, index) => (

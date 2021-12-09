@@ -12,7 +12,10 @@ import { DeleteTwoTone } from "@mui/icons-material";
 
 const NoteCard = ({ note, handleDelete }) => {
   return (
-    <Card elevation={5}>
+    <Card
+      elevation={5}
+      sx={{ border: note.category === "work" ? "1px solid red" : "" }}
+    >
       <CardHeader
         action={
           <IconButton onClick={() => handleDelete(note.id)}>
@@ -23,7 +26,9 @@ const NoteCard = ({ note, handleDelete }) => {
         subheader={note.category}
       />
       <CardContent>
-        <Typography variant="body2" colot="textSecondary">{note.details}</Typography>
+        <Typography variant="body2" colot="textSecondary">
+          {note.details}
+        </Typography>
       </CardContent>
     </Card>
   );

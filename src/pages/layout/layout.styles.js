@@ -1,10 +1,12 @@
+import ourTheme from "../../assets/our-theme";
+
 const drawerWidth = 240;
 
 const layoutStyles = {
     page: {
         background: "#f9f9f9",
         width: "100%",
-        paddingLeft: 3,
+        padding: ourTheme.spacing(3),
     },
     drawer: {
         width: drawerWidth,
@@ -17,7 +19,10 @@ const layoutStyles = {
     },
     active: {
         background: "#f4f4f4"
-    }
+    },
+    title: {
+        padding: ourTheme.spacing(2)
+    },
 };
 
 export default layoutStyles;
