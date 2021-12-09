@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+// import { Box, styled } from "@mui/system";
+
 // components
-import { Box, styled } from "@mui/system";
 import {
   Typography,
   Button,
-  ButtonGroup,
   Container,
   TextField,
   Radio,
@@ -15,15 +15,8 @@ import {
   FormControl,
 } from "@mui/material";
 // icons
-import {
-  AcUnit,
-  AcUnitOutlined,
-  Send,
-  KeyboardArrowRight,
-  Keyboard,
-} from "@mui/icons-material";
+import { Send, KeyboardArrowRight } from "@mui/icons-material";
 // styles
-
 import createStyles from "./create.styles";
 
 /*
@@ -39,7 +32,6 @@ Instead of using the makeStyles function, create an object for the styling prope
 // Styling is in the create.styles.js file
 
 const Create = () => {
-
   // no need for:
   // const classes = useStyles()
 
@@ -80,8 +72,8 @@ const Create = () => {
   return (
     <Container size="sm">
       <Typography
-        /* 
-      Instead of using className, you can just use the sx prop to pass the component it's respective styling object
+      /* 
+      Instead of using className, you can just use the sx prop to provide its respective styling object
       */
         sx={createStyles.title}
         variant="h6"

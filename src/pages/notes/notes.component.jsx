@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
+
 // components
 import { Box } from "@mui/system";
-import { Container, Grid, Paper } from "@mui/material";
+// import { Container, Grid, Paper } from "@mui/material";
 
 import { NoteCard } from "..";
 import Masonry from "react-masonry-css";
@@ -33,11 +34,12 @@ const Notes = () => {
       method: "DELETE",
     });
 
+    // Will update the state with an array that excludes the note with the id that was passed
     const newNotes = notes.filter((note) => note.id !== id);
     setNotes(newNotes);
   };
 
-  // Masonry
+  // Masonry breakpoints
   const breakpoints = {
     default: 3,
     1100: 2,
@@ -47,7 +49,7 @@ const Notes = () => {
   return (
     <Box>
       {/* Takes the base spacing value and multiplies it by 3 */}
-      {/* Masonry */}
+      {/* Masonry grid, styling in index.css */}
       <Masonry
         breakpointCols={breakpoints}
         className="my-masonry-grid"
@@ -74,19 +76,6 @@ const Notes = () => {
 export default Notes;
 
 //  What the grid configuration will be for the 3 sections on the intranet homepage
-{
-  /* <Grid container>
-  <Grid item xs={12} sm={4} md={4}>
-    <Paper>1</Paper>
-  </Grid>
-  <Grid item xs={12} sm={4} md={4}>
-    <Paper>2</Paper>
-  </Grid>
-  <Grid item xs={12} sm={4} md={4}>
-    <Paper>3</Paper>
-  </Grid>
-</Grid>; */
-}
 {
   /* <Grid container>
         <Grid item xs={12} sm={6} md={3}>
